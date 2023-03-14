@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #gridcontainer {
@@ -10,14 +11,21 @@ body {
 }
 
 header {
-    margin: 2rem 10rem 0;
+    padding: 0rem 20rem;
+    box-shadow: 2px 3px 5px rgb(233, 231, 228);
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#logocontainer{
+#logocontainer {
     display: flex;
     flex-direction: column;
-    gap: .65rem;
+    gap: .35rem;
     width: max-content;
+    height: 100%;
+    justify-content: center;
 }
 
 #logo {
@@ -34,9 +42,26 @@ header {
 }
 
 #underline {
-    width: 100%;
-    height: .3125rem;
-    border-radius: 5px;
+    height: .25rem;
+    border-radius: 10px;
     background-clip: unset;
     -webkit-background-clip: unset;
+}
+
+main {
+    background-color: #f1ecec;
+}
+
+#newbook {
+    font-size: 3rem;
+    color: #00ffd5;
+    width: 4rem;
+    height: 4rem;
+    border: none;
+    border-radius: 2rem;
+    background-color: #00b7ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 2px 2px rgb(242, 238, 238);
 }
