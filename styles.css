@@ -66,11 +66,13 @@ header {
 } 
 
 main {
-    background-color: #f3f0f0;
-    padding: 2.5rem 15rem 0 15rem;
+    background-color: #f9f7f7;
+    padding: 2.5rem 15rem;
 }
 
 #bookgrid {
     display: grid;
+    height: 100%;
     grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
 }
