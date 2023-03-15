@@ -6,6 +6,19 @@ const pages = document.querySelector('#pages');
 const check = document.querySelector('#check');
 const bookGrid = document.querySelector('#book-grid');
 
+//modal
+const openModal = document.querySelector('.open-modal');
+const closeModal = document.querySelector('.close-modal');
+const modal = document.querySelector('#modal');
+
+openModal.addEventListener('click', () => {
+    modal.showModal();
+});
+
+closeModal.addEventListener('click', () => {
+    modal.close();
+});
+
 //main
 let myLibrary = [];
 let counter = 0;
@@ -21,8 +34,10 @@ submit.addEventListener('click', () => {
     const newBook = new Book(book.value, author.value, pages.value, check.checked);
     myLibrary.push(newBook);
     populateBooks();
+    attachRemoveListeners();
+    attachReadListeners();
     modal.close();
-})
+});
 
 function populateBooks() {
     const cardCreate = document.createElement('div');
@@ -38,7 +53,7 @@ function populateBooks() {
     pagesCreate.classList.add('content');
     
     const checkCreate = document.createElement('div');
-    checkCreate.classList.add('content');
+    checkCreate.classList.add('content', 'read');
     
     const removeBtnCreate = document.createElement('button');
     removeBtnCreate.classList.add('remove');
@@ -51,32 +66,29 @@ function populateBooks() {
         myLibrary[counter].check == true ? checkCreate.innerText = "Have read" : checkCreate.innerText = "Haven't read";
         cardCreate.append(bookCreate, authorCreate, pagesCreate, checkCreate, removeBtnCreate);
         cardCreate.dataset.num = counter;
+        let rngDeg = Math.random() * 360;
+        cardCreate.style.backgroundImage = `linear-gradient(${rngDeg}deg, #00f2ff, #00ff88)`
         bookGrid.appendChild(cardCreate);
         counter++;
     }
+}
 
-    const remove = bookGrid.lastElementChild.lastElementChild;
-
-    remove.addEventListener('click', () => {
+function attachRemoveListeners() {
+    const removeBtn = bookGrid.lastElementChild.lastElementChild;
+    removeBtn.addEventListener('click', () => {
         const cards = document.querySelectorAll('.card');
         cards.forEach(card => {
-            if (card.dataset.num >= remove.parentElement.dataset.num) card.dataset.num--;
+            if (card.dataset.num > removeBtn.parentElement.dataset.num) card.dataset.num--;
         });
         counter--;
-        remove.parentElement.remove();
-        myLibrary.splice(remove.parentElement.dataset.num, 1);
+        removeBtn.parentElement.remove();
+        myLibrary.splice(removeBtn.parentElement.dataset.num, 1);
     });
 }
 
-// modal
-const openModal = document.querySelector('.open-modal');
-const closeModal = document.querySelector('.close-modal');
-const modal = document.querySelector('#modal');
-
-openModal.addEventListener('click', () => {
-    modal.showModal();
-});
-
-closeModal.addEventListener('click', () => {
-    modal.close();
-});
+function attachReadListeners() {
+    const read = bookGrid.lastElementChild.querySelector('.content:nth-child(4)')
+    read.addEventListener('click', () => {
+        read.innerText == "Have read" ? read.innerText = "Haven't read" : read.innerText = "Have read";
+    });
+}
