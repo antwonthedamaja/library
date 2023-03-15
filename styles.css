@@ -99,8 +99,8 @@ main {
 .card.gradient .content {
     -webkit-text-fill-color: initial;
     color: black;
-    font-weight: 700;
     font-size: 1.3rem;
+    font-weight: 700;
 }
 
 .card.gradient button {
