@@ -98,12 +98,7 @@ function attachRemoveListeners() {
 function attachReadListeners() {
     const read = bookGrid.lastElementChild.querySelector('.content:nth-child(4)')
     read.addEventListener('click', () => {
-        if (read.innerText == "Have read") {
-            read.innerText = "Haven't read";
-            
-        } else {
-            read.innerText = "Have read"
-
-        }
+        read.innerText == "Have read" ? read.innerText = "Haven't read" : read.innerText = "Have read";
+        myLibrary[read.parentElement.dataset.num].checkToggle();
     });
 }
