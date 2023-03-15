@@ -9,17 +9,40 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="gridcontainer">
+    <div id="grid-container">
         <header>
-            <div id="logocontainer" class="gradient">
-                <div id="logo">myLibrary</div>
-                <div id="underline" class="gradient"></div>
+            <div id="header-container">
+                <div id="logo-container" class="gradient">
+                    <div id="logo">myLibrary</div>
+                    <div id="underline" class="gradient"></div>
+                </div>
+                <button id="newbook" class="open-modal">
+                    <div class="gradient">+</div>
             </div>
-            <button id="newbook">
-                <div class="gradient">+</div>
+            <dialog id="modal">
+                <div id="modal-container">
+                    <h3>Add Book?</h3>
+                    <button class="close-modal">X</button>
+                    <input class="modal-input" type="text" id="book" name="book" placeholder="Book name">
+                    <input class="modal-input" type="text" id="author" name="author" placeholder="Author">
+                    <input class="modal-input" type="number" id="pages" name="pages" min="0" placeholder="Pages">
+                    <div id="checkbox-container">
+                        <p>Read it?</p>
+                        <input type="checkbox" id="read" name="read">
+                    </div>
+                    <button class="submit">Add New Book</button>
+                </div>
+            </dialog>
         </header>
         <main>
-            <div id="bookgrid">
+            <div id="book-grid">
+                <div class="card gradient">
+                    <div class="title content">The Lord of the Rings</div>
+                    <div class="author content">J.R.R. Tolkein</div>
+                    <div class="pages content">1178 pages</div>
+                    <div class="read content">Read</div>
+                    <button class="remove">Remove?</button>
+                </div>
             </div>
         </main>
     </div>

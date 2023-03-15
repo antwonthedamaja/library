@@ -4,27 +4,31 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#gridcontainer {
+#grid-container {
     display: grid;
     grid-template: 1fr 5fr / 1fr;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 header {
-    padding: 0rem 15rem;
     box-shadow: 2px 3px 5px rgb(233, 231, 228);
     z-index: 1;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
 }
 
-#logocontainer {
+#header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+}
+
+#logo-container {
     display: flex;
     flex-direction: column;
     gap: .35rem;
     width: max-content;
-    height: 100%;
     justify-content: center;
 }
 
@@ -44,20 +48,21 @@ header {
 #underline {
     height: .25rem;
     border-radius: 10px;
-    background-clip: unset;
-    -webkit-background-clip: unset;
+    background-clip: initial;
+    -webkit-background-clip: initial;
 }
 
 #newbook {
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    outline: none;
     border: none;
     border-radius: 2rem;
     background-color: #00d0ff;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 2px 2px rgb(242, 238, 238);
+    box-shadow: 0 0 2px 2px rgb(204, 235, 247);
 }
 
 #newbook > .gradient {
@@ -67,12 +72,105 @@ header {
 
 main {
     background-color: #f9f7f7;
-    padding: 2.5rem 15rem;
+    padding: 2.5rem 0rem;
+    display: flex;
+    justify-content: center;
 }
 
-#bookgrid {
+#book-grid {
     display: grid;
-    height: 100%;
+    min-height: 100%;
+    width: 60%;
     grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
-    grid-auto-rows: 1fr;
+    gap: 1rem;
+}
+
+.card {
+    background-image: linear-gradient(120deg, #00f2ff, #00ff95);
+    border-radius: 10px;
+    background-clip: initial;
+    -webkit-background-clip: initial;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card.gradient .content {
+    -webkit-text-fill-color: initial;
+    color: black;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.card.gradient button {
+    -webkit-text-fill-color: initial;
+    font-weight: 700;
+    width: 5rem;
+    color: black;
+    border: 1px solid rgb(142, 212, 211);
+    border-radius: 5px;
+}
+
+#modal {
+    padding: 1rem;
+    width: 17rem;
+    height: 21rem;
+}
+
+#modal::backdrop {
+
+}
+
+#modal-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr 1fr 1fr / 10fr 1fr;
+    gap: 1rem;
+    justify-items: center;
+}
+
+#modal-container h3 {
+    grid-column: 1 / 3;
+    justify-self: center;
+    position: fixed;
+}
+
+.close-modal {
+    grid-column: 2 / 3;
+    height: 50%;
+}
+
+.modal-input {
+    border-radius: 5px;
+    width: 100%;
+    height: 75%;
+    grid-column: 1 / 3;
+}
+
+#book {
+    grid-row: 2 / 2;
+}
+
+#author {
+    grid-row: 3 / 3;
+}
+
+#pages {
+    grid-row: 4 / 4;
+}
+
+#checkbox-container {
+    grid-row: 5 / 5;
+    grid-column: 1 / 3;
+    display: flex;
+    justify-content: center;
+    gap: .25rem;
+    align-items: center;
+}
+
+.submit {
+    grid-column: 1 / 3;
+    width: 75%;
 }
