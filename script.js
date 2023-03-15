@@ -28,7 +28,18 @@ function Book(name, author, pages, check) {
     this.author = author;
     this.pages = pages;
     this.check = check;
+    this.checkToggle = function() {
+        this.check = !check;
+    }
 }
+
+// if (myLibrary.length > 0) { //for later when storage is implemented
+//     for (let i = 0; i < myLibrary.length; i++) {
+//         populateBooks();
+//         attachRemoveListeners();
+//         attachReadListeners();
+//     }
+// }
 
 submit.addEventListener('click', () => {
     const newBook = new Book(book.value, author.value, pages.value, check.checked);
@@ -45,32 +56,30 @@ function populateBooks() {
 
     const bookCreate = document.createElement('div');
     bookCreate.classList.add('content');
-    
+    bookCreate.innerText = `"${myLibrary[counter].name}"`;
+
     const authorCreate = document.createElement('div');
     authorCreate.classList.add('content');
-    
+    authorCreate.innerText = 'By: ' + myLibrary[counter].author;
+
     const pagesCreate = document.createElement('div');
     pagesCreate.classList.add('content');
-    
+    pagesCreate.innerText = myLibrary[counter].pages + ' pages';
+
     const checkCreate = document.createElement('div');
     checkCreate.classList.add('content', 'read');
-    
+    myLibrary[counter].check == true ? checkCreate.innerText = "Have read" : checkCreate.innerText = "Haven't read";
+
     const removeBtnCreate = document.createElement('button');
     removeBtnCreate.classList.add('remove');
     removeBtnCreate.innerText = 'Remove?';
 
-    while (counter < myLibrary.length) {
-        bookCreate.innerText = `"${myLibrary[counter].name}"`;
-        authorCreate.innerText = 'By: ' + myLibrary[counter].author;
-        pagesCreate.innerText = myLibrary[counter].pages + ' pages';
-        myLibrary[counter].check == true ? checkCreate.innerText = "Have read" : checkCreate.innerText = "Haven't read";
-        cardCreate.append(bookCreate, authorCreate, pagesCreate, checkCreate, removeBtnCreate);
-        cardCreate.dataset.num = counter;
-        let rngDeg = Math.random() * 360;
-        cardCreate.style.backgroundImage = `linear-gradient(${rngDeg}deg, #00f2ff, #00ff88)`
-        bookGrid.appendChild(cardCreate);
-        counter++;
-    }
+    cardCreate.append(bookCreate, authorCreate, pagesCreate, checkCreate, removeBtnCreate);
+    cardCreate.dataset.num = counter;
+    let rngDeg = Math.random() * 360;
+    cardCreate.style.backgroundImage = `linear-gradient(${rngDeg}deg, #00f2ff, #00ff88)`
+    bookGrid.appendChild(cardCreate);
+    counter++;
 }
 
 function attachRemoveListeners() {
@@ -89,6 +98,12 @@ function attachRemoveListeners() {
 function attachReadListeners() {
     const read = bookGrid.lastElementChild.querySelector('.content:nth-child(4)')
     read.addEventListener('click', () => {
-        read.innerText == "Have read" ? read.innerText = "Haven't read" : read.innerText = "Have read";
+        if (read.innerText == "Have read") {
+            read.innerText = "Haven't read";
+            
+        } else {
+            read.innerText = "Have read"
+
+        }
     });
 }
