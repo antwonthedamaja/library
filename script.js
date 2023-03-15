@@ -49,16 +49,16 @@ function populateBooks() {
         pagesCreate.innerText = myLibrary[i].pages + ' pages';
         myLibrary[i].check == true ? checkCreate.innerText = "Have read" : checkCreate.innerText = "Haven't read";
         cardCreate.append(bookCreate, authorCreate, pagesCreate, checkCreate, removeBtnCreate);
-        cardCreate.dataset.num = i;
         bookGrid.appendChild(cardCreate);
     }
 
-    // const removeBtn = document.querySelectorAll('.remove');
-    // removeBtn.forEach(btn => {
-    //     btn.addEventListener('click', () => {
-
-    //     });
-    // });
+    const removeBtn = document.querySelectorAll('.remove');
+    
+    removeBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.parentElement.remove();
+        });
+    });
 }
 
 // modal
