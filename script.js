@@ -11,11 +11,21 @@ closeModal.addEventListener('click', () => {
     modal.close();
 })
 
-//form listeners
+//listeners
 const submit = document.querySelector('.submit');
-
+const book = document.querySelector('#book');
+const author = document.querySelector('#author');
+const pages = document.querySelector('#pages');
+const read = document.querySelector('#read');
+const bookGrid = document.querySelector('.book-grid');
 
 let myLibrary = [];
+
+function populateBooks() {
+    for (let i = 0; i < myLibrary.length; i++) {
+        
+    }
+}
 
 function Book(name, author, pages, read) {
     this.name = name;
@@ -24,17 +34,10 @@ function Book(name, author, pages, read) {
     this.read = read;
 }
 
-function addBookToLibrary(book) {
-    myLibrary.push(book);
-}
-
-function getBooks() {
-    for (let i = 0; i < myLibrary.length; i++) {
-
-    }
-}
-
 submit.addEventListener('click', () => {
-    
+    let newBook = new Book(book.value, author.value, pages.value, read.checked);
+    myLibrary.push(newBook);
+    console.table(myLibrary);
+    // populateBooks();
     modal.close();
 })
