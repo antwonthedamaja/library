@@ -118,9 +118,9 @@ main {
     height: 21rem;
 }
 
-#modal::backdrop {
+/* #modal::backdrop {
 
-}
+} */
 
 #modal-container {
     height: 100%;
