@@ -3,7 +3,7 @@ const submit = document.querySelector('.submit');
 const book = document.querySelector('#book');
 const author = document.querySelector('#author');
 const pages = document.querySelector('#pages');
-const check = document.querySelector('#check');
+const checkbox = document.querySelector('#checkbox');
 const bookGrid = document.querySelector('#book-grid');
 
 //modal
@@ -28,9 +28,10 @@ function Book(name, author, pages, check) {
     this.author = author;
     this.pages = pages;
     this.check = check;
-    this.checkToggle = function() {
-        this.check = !check;
-    }
+}
+
+Book.prototype.checkToggle = function() {
+    this.check = !this.check;
 }
 
 // if (myLibrary.length > 0) { //for later when storage is implemented
@@ -42,7 +43,7 @@ function Book(name, author, pages, check) {
 // }
 
 submit.addEventListener('click', () => {
-    const newBook = new Book(book.value, author.value, pages.value, check.checked);
+    const newBook = new Book(book.value, author.value, pages.value, checkbox.checked);
     myLibrary.push(newBook);
     populateBooks();
     attachRemoveListeners();
