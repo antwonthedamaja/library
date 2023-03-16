@@ -53,8 +53,8 @@ header {
 }
 
 #newbook {
-    width: 3.45rem;
-    height: 3.45rem;
+    width: 3.4rem;
+    height: 3.4rem;
     outline: none;
     border: none;
     border-radius: 2rem;
@@ -90,6 +90,7 @@ main {
     background-clip: initial;
     -webkit-background-clip: initial;
     display: flex;
+    min-height: 14rem;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
