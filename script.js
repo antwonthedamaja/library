@@ -34,14 +34,6 @@ Book.prototype.checkToggle = function() {
     this.check = !this.check;
 }
 
-// if (myLibrary.length > 0) { //for later when storage is implemented
-//     for (let i = 0; i < myLibrary.length; i++) {
-//         populateBooks();
-//         attachRemoveListeners();
-//         attachReadListeners();
-//     }
-// }
-
 submit.addEventListener('click', () => {
     const newBook = new Book(book.value, author.value, pages.value, checkbox.checked);
     myLibrary.push(newBook);
